@@ -20,6 +20,7 @@ function PlannerConferenceCtrl(ConferencesService, NotificationsService, Current
         })
     }
 
+
     vm.$routerOnActivate = function(next) {
         vm.conference = ConferencesService.getConferenceById(next.params.id)
         vm.session = SessionsService.getSessionById(vm.conference.sessionId)
@@ -27,10 +28,21 @@ function PlannerConferenceCtrl(ConferencesService, NotificationsService, Current
         vm.start_time = new Date(vm.conference.start_time)
         vm.end_time = new Date(vm.conference.end_time)
         vm.titleName = vm.conference.name
-        vm.backAction = function() {
-            vm.$router.navigate(['PlannerSession', {
-                id: vm.conference.sessionId
-            }])
+        if (next.params.data === "backDiscover") {
+          vm.backAction = function() {
+              vm.$router.parent.navigate(['SessionSearch'])
+          }
+        } else if (next.params.data === "backProfile") {
+          vm.backAction = function() {
+              vm.$router.parent.navigate(['Profile'])
+          }
+        } else {
+            vm.backAction = function() {
+                vm.$router.navigate(['PlannerSession', {
+                    id: vm.conference.sessionId,
+                    back: next.params.back
+                }])
+            }
         }
         vm.place = PlacesService.getPlaceById(vm.session.placeId)
     }

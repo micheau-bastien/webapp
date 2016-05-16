@@ -12,12 +12,12 @@
     </md-input-container>
     <md-content flex>
         <div layout-gt-xs="row">
-            <div flex ng-repeat="timeslot in $ctrl.timeslots" layout="column">
+            <div flex ng-repeat="timeslot in $ctrl.timeslots | orderBy:'start_time'" layout="column">
                 <h4>{{timeslot.start_time | amDateFormat:'HH:mm'}}
                     -
                     {{timeslot.end_time | amDateFormat:'HH:mm'}}</h4>
                 <md-divider></md-divider>
-                <wa-calendar-session-card flex ng-repeat="session in $ctrl.sessions | filter:{ start_time: timeslot.start_time.getTime()}:true" session="session" session-clicked="$ctrl.showSession"></wa-calendar-session-card>
+                <wa-calendar-session-card ng-repeat="session in $ctrl.sessions | filter:{ start_time: timeslot.start_time.getTime()}:true" session="session" session-clicked="$ctrl.showSession"></wa-calendar-session-card>
             </div>
         </div>
     </md-content>

@@ -16,6 +16,11 @@ wa-sidebar {
         .separator {
             height: 20px;
         }
+        .md-toolbar-tools {
+          img {
+            margin-right: 5px;
+          }
+        }
     }
     md-sidenav,
     md-sidenav.md-closed.md-locked-open-add-active,
@@ -23,5 +28,21 @@ wa-sidebar {
         min-width: 250px !important;
         width: 250px !important;
         max-width: 250px !important;
+    }
+    .footer {
+      color: rgba(0,0,0, 0.5);
+    }
+    .footer-love {
+      color: rgba(0,0,0, 0.5);
+      &:hover {
+        color: rgba(0,0,0, 0.7);
+      }
+      md-icon {
+        color: inherit;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
     }
 }
