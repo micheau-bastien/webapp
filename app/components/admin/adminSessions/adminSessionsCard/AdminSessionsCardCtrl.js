@@ -41,7 +41,6 @@ function AdminSessionsCardCtrl(SessionsService, ConferencesService, $mdDialog) {
             vm.getConferences()
         }
         vm.showConferences = !vm.showConferences
-
     }
 
     vm.getConferences = function() {

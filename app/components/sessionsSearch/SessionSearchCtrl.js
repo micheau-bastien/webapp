@@ -1,14 +1,13 @@
 angular.module('webapp').controller('SessionSearchCtrl', SessionSearchCtrl)
-SessionSearchCtrl.$inject = ['SessionsService', 'ConferencesService']
+SessionSearchCtrl.$inject = ['SessionsService']
 
 /**
  * @ngdoc controller
  * @name webapp.controller:SessionSearchCtrl
  * @requires SessionsService
- * @requires ConferencesService
  * @description In charge of the sessionCard in SessionSearch view.
  */
-function SessionSearchCtrl(SessionsService, ConferencesService) {
+function SessionSearchCtrl(SessionsService) {
   var vm = this
   /**
    * @ngdoc property
