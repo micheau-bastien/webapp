@@ -37,7 +37,7 @@ function PlannerCalendarCtrl(SessionsService, EventService, moment) {
                         end_time: new Date(item.end_time)
                     })
                 })
-
+                vm.selectedTimeslot = vm.timeslots[0]
             }
             if (next.params.id) {
               vm.selectedIndex = next.params.id
@@ -49,6 +49,11 @@ function PlannerCalendarCtrl(SessionsService, EventService, moment) {
     }
 
     vm.selectDay = function(index) {
+        vm.selectedIndex = index
+        vm.getSessions(vm.selectedIndex)
+    }
+
+    vm.selectDayMobile = function(index) {
         vm.$router.navigate(['PlannerCalendar', {
             id: index
         }])
@@ -63,7 +68,7 @@ function PlannerCalendarCtrl(SessionsService, EventService, moment) {
     vm.showSession = function(session) {
         vm.$router.navigate(['PlannerSession', {
             id: session.$id,
-            back: vm.selectedIndex
+            back: ""+vm.selectedIndex+""
         }])
     }
 }
