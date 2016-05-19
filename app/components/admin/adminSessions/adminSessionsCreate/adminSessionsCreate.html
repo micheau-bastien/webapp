@@ -1,5 +1,5 @@
 <div layout="column">
-    <wa-breadcrump title-name="$ctrl.titleName" back-name="$ctrl.backName" back-action="$ctrl.backAction()"></wa-breadcrump>
+    <wa-breadcrump title-name="$ctrl.titleName" back-name="$ctrl.backName" back-action="$ctrl.backAction()" text-action="$ctrl.textAction" icon-action="$ctrl.iconAction" action="$ctrl.action()"></wa-breadcrump>
     <md-content layout-padding>
         <form>
             <div layout-padding>
@@ -10,7 +10,7 @@
                     </md-input-container>
                     <md-input-container class="md-block">
                         <md-select placeholder="Timeslot" ng-model="$ctrl.timeslot">
-                            <md-option ng-repeat="timeslot in $ctrl.event.timeslots" ng-value="timeslot">{{timeslot.start_time | amDateFormat:'HH:mm'}}
+                            <md-option ng-repeat="timeslot in $ctrl.event.timeslots | orderBy:'start_time'" ng-value="timeslot">{{timeslot.start_time | amDateFormat:'HH:mm'}}
                                 -
                                 {{timeslot.end_time | amDateFormat:'HH:mm'}}</md-option>
                         </md-select>
@@ -30,11 +30,6 @@
                         </md-select>
                     </md-input-container>
                 </div>
-            </div>
-            <div layout-padding>
-                <md-input-container class="md-block">
-                    <md-button class="md-raised md-accent" ng-click="$ctrl.addSession()">Create !</md-button>
-                </md-input-container>
             </div>
         </form>
     </md-content>
